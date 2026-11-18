@@ -1,0 +1,326 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     12796,        316]
+NotebookOptionsPosition[      9885,        268]
+NotebookOutlinePosition[     10275,        284]
+CellTagsIndexPosition[     10232,        281]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Portef\[OSlash]ljeopgave 1", "Section",
+ CellChangeTimes->{{3.904975329444317*^9, 3.904975332237374*^9}, 
+   3.9049753941246414`*^9, {3.9049755159109926`*^9, 3.904975518530716*^9}, {
+   3.9049772937659335`*^9, 3.90497729386621*^9}, {4.002084516167799*^9, 
+   4.002084516231159*^9}},ExpressionUUID->"33278281-fb48-4a86-8a7c-\
+64498c114e35"],
+
+Cell["\<\
+I denne opgave kr\[AE]ves det, at der bruges m\[OSlash]nstre og betingelser \
+til kontrol af datastrukturer for alle funktioner\
+\>", "Text",
+ CellChangeTimes->{{3.9049772910208273`*^9, 
+  3.9049773488427296`*^9}},ExpressionUUID->"e51b813b-8452-4b20-97ef-\
+f0d2980b2c30"],
+
+Cell[CellGroupData[{
+
+Cell["a)", "Subsection",
+ CellChangeTimes->{{3.9049755231147485`*^9, 3.9049755235387125`*^9}, 
+   3.9688119787775497`*^9},ExpressionUUID->"aa3d7e1f-bf02-4339-9f62-\
+c4ed9c2d47c0"],
+
+Cell["\<\
+Skriv en funktion InCollision der som input tager en cirkelformet robots \
+radius og koordinat, en liste af cirkelformede forhindringer med radius og \
+koordinater samt en sikkerhedsafstand.\
+\>", "Text",
+ CellChangeTimes->{{3.9049756852072163`*^9, 
+  3.904975732638603*^9}},ExpressionUUID->"61037cc1-727f-4644-89ea-\
+ed532e6cbfe2"],
+
+Cell["Funktionen skal alts\[ARing] tage input som eksempel herunder", "Text",
+ CellChangeTimes->{{3.904975737665576*^9, 3.904975741436236*^9}, {
+  3.9049758093773785`*^9, 
+  3.9049758159564667`*^9}},ExpressionUUID->"e5aecbf9-ae75-4dec-9d8e-\
+e74c9ed87e7b"],
+
+Cell["\<\
+InCollision[{robotRadius, {x, y}}, {{r1, {x1, y1}}, {r2, {x2, y2}}, ..., {rn, \
+{xn, yn}}}, safetyDistance]\
+\>", "CodeText",
+ CellChangeTimes->{{3.904975752158093*^9, 3.9049758253439054`*^9}, 
+   3.9049759551504383`*^9},ExpressionUUID->"84161e06-d1fc-40eb-af96-\
+4308ca6d65f5"],
+
+Cell["\<\
+Og et eksempel herunder med to forhindringer samt en sikkerhedsafstand p\
+\[ARing] 0.05m\
+\>", "Text",
+ CellChangeTimes->{{3.9049758332962437`*^9, 
+  3.9049758504669037`*^9}},ExpressionUUID->"f647270e-8904-4853-90bb-\
+73b316471f10"],
+
+Cell["\<\
+InCollision[{0.3, {0, 1}}, {{1, {1.5, 1.3}}, {0.5, {2, 2}}}, 0.05]\
+\>", "CodeText",
+ CellChangeTimes->{
+  3.904975682667433*^9, {3.904975852845276*^9, 
+   3.9049758533095083`*^9}},ExpressionUUID->"33caf658-636a-4b16-b11b-\
+59095b1e7c95"],
+
+Cell["\<\
+Funktionen skal returnere True s\[ARing]fremt der er risiko for kollision og \
+False, hvis der ikke er risiko for kollision. \
+\>", "Text",
+ CellChangeTimes->{{3.904975863172682*^9, 3.9049758931379857`*^9}, {
+   3.904976136740487*^9, 3.9049761423786135`*^9}, 
+   4.002683860826685*^9},ExpressionUUID->"52c1ff71-944f-449c-ae0e-\
+e00137f948ec"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["b)", "Subsection",
+ CellChangeTimes->{{3.904976901142289*^9, 3.904976901559101*^9}, 
+   3.9688119827890778`*^9},ExpressionUUID->"0f5108ad-2c7e-4f62-b7c1-\
+ffb71fe843c4"],
+
+Cell["\<\
+Skriv en funktion LinearPath, som laver en line\[AE]r sti mellem to punkter \
+med en opl\[OSlash]sning givet som input til funktionen. Funktionen skal alts\
+\[ARing] se s\[ARing]ledes ud:\
+\>", "Text",
+ CellChangeTimes->{{3.9049769034511538`*^9, 3.904976971792745*^9}, 
+   3.90497707369252*^9},ExpressionUUID->"cdd6c9cb-0e2f-425e-bb9e-\
+16ce83301091"],
+
+Cell["LinearPath[{x1, y1}, {x2, y2}, interval]", "Text",
+ CellChangeTimes->{{3.9049769300546513`*^9, 3.9049769310425763`*^9}, {
+  3.904976974687928*^9, 
+  3.904977021849044*^9}},ExpressionUUID->"ab3d400c-0b11-4eb3-9dd5-\
+bc1a80f49dba"],
+
+Cell["og som eksempel kunne dette v\[AE]re", "Text",
+ CellChangeTimes->{{3.9049769986782455`*^9, 
+  3.904977002840387*^9}},ExpressionUUID->"42375cff-57d0-487c-ad6b-\
+be490ddf0970"],
+
+Cell["LinearPath[{0, 1}, {1, 3}, 0.05]", "CodeText",
+ CellChangeTimes->{{3.904977013385483*^9, 
+  3.904977042656801*^9}},ExpressionUUID->"bbae1e2c-6bfc-4fc6-b437-\
+171ea59b1ed9"],
+
+Cell["\<\
+hvor der alts\[ARing] for hver 5 cm laves et nyt punkt. Alle punkter skal \
+returneres i en liste.
+
+UPDATE: LinearPath skal beregne afstanden mellem de to punkter og \
+s\[OSlash]rge for at afstanden bliver den samme mellem hvert punkt. Dvs. \
+afstanden \[OpenCurlyDoubleQuote]interval\[CloseCurlyDoubleQuote] skal alts\
+\[ARing] justeres, s\[ARing] den maksimale afstand mellem punkterne er 0.05, \
+men samtidig er s\[ARing] t\[AE]t p\[ARing] 0.05 som muligt i det givne \
+eksempel. Tilsvarende, hvis funktionen kaldes som LinearPath[{0, 1}, {1, 3}, \
+0.03] g\[AE]lder det samme alts\[ARing] med 3 cm mellem hvert punkt.\
+\>", "Text",
+ CellChangeTimes->{{3.904977044416013*^9, 3.904977097698642*^9}, {
+  4.0026773524647655`*^9, 4.0026773603726673`*^9}, {4.0026774175701237`*^9, 
+  4.0026775389839897`*^9}},ExpressionUUID->"5479710c-659f-44b0-95a2-\
+118138620cc9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["c)", "Subsection",
+ CellChangeTimes->{{3.9049769256179657`*^9, 3.904976925994064*^9}, 
+   3.9688119858163624`*^9},ExpressionUUID->"b7d5b385-880a-40e3-a25c-\
+46994cd95a19"],
+
+Cell["\<\
+Skriv en funktion PathCollision som ved brug af output fra LinearPath og \
+InCollision afg\[OSlash]r om en sti har en kollision. Formatet for funktionen \
+bliver s\[ARing]ledes\
+\>", "Text",
+ CellChangeTimes->{{3.904977846780787*^9, 
+  3.9049779101993237`*^9}},ExpressionUUID->"f8870fc0-0445-4d73-9f0a-\
+d8b81da6b666"],
+
+Cell["\<\
+PathCollision[{radiusRobot, {{x1, y1}, {x2, y2}, ..., {xn, yn}}}, {{or1, \
+{ox1, oy1}}, {or2, {ox2, oy2}}, ..., {orn, {oxn, oyn}}}, safetyDistance]\
+\>", "CodeText",
+ CellChangeTimes->{{3.9049779216768465`*^9, 
+  3.9049780205768127`*^9}},ExpressionUUID->"885db92c-3b6f-4f1e-b43d-\
+f9a9dc014cba"],
+
+Cell[TextData[{
+ "hvor radiusRobot er radius af robotten, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["x", "i"], ",", 
+     SubscriptBox["y", "i"]}], "}"}], TraditionalForm]],ExpressionUUID->
+  "9f0b975d-22fc-460a-97ec-6457b81bb9fb"],
+ " er alle punkter, som robotten passerer som beregnet med funktionen \
+LinearPath. Punkterne ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["or", "i"], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["ox", "i"], ",", 
+       SubscriptBox["oy", "i"]}], "}"}]}], "}"}], TraditionalForm]],
+  ExpressionUUID->"fbc2b1dc-9809-42a8-9849-b8c08121930b"],
+ " er forhindringernes radius og koordinater. Afstanden \
+\[OpenCurlyDoubleQuote]safetyDistance\[CloseCurlyDoubleQuote] er den afstand, \
+som vi v\[AE]lger som sikkerhedsafstand."
+}], "Text",
+ CellChangeTimes->{{3.904978023544341*^9, 3.9049781757365265`*^9}, {
+  4.00267772974601*^9, 4.0026777897647877`*^9}, {4.002677872914652*^9, 
+  4.0026779560621166`*^9}},ExpressionUUID->"7702cb27-45b8-4d78-8efd-\
+6dc3d2d85d34"],
+
+Cell["\<\
+Funktionen skal returnerer en liste af True/False for hvert punkt hvor der er \
+hhv. risiko for kollision eller ej.\
+\>", "Text",
+ CellChangeTimes->{{3.9049781772042418`*^9, 3.904978198441016*^9}, {
+  3.9049787102073517`*^9, 
+  3.9049787349038663`*^9}},ExpressionUUID->"3c99a333-29d3-4f2b-b39c-\
+ed6645efc5ad"],
+
+Cell["Et kald kunne se s\[ARing]ledes ud", "Text",
+ CellChangeTimes->{{3.9049782053075943`*^9, 
+  3.904978209801833*^9}},ExpressionUUID->"85e76795-ee3d-4092-b3eb-\
+3b2ef7c48adb"],
+
+Cell["\<\
+path = LinearPath[{0, 1}, {1, 3}, 0.05];
+obstacles = {{1, {1.5, 1.3}}, {0.5, {2.3, 2.6}}, {0.25, {0.5, 2.6}}};
+PathCollision[{0.3, path}, obstacles, 0.05]\
+\>", "CodeText",
+ CellChangeTimes->{{3.9049782140028276`*^9, 3.9049783152495112`*^9}, {
+  3.907903724076711*^9, 
+  3.90790372660382*^9}},ExpressionUUID->"fab47b11-5dbb-465b-9f86-\
+deaf49526713"],
+
+Cell["\<\
+eller ved brug af flere punkter forhindringer og en lidt anden sti:\
+\>", "Text",
+ CellChangeTimes->{{4.002677572535387*^9, 4.0026775815798206`*^9}, {
+  4.0026776724546757`*^9, 
+  4.002677682324562*^9}},ExpressionUUID->"e1417909-7047-b049-8354-\
+61337e505932"],
+
+Cell["\<\
+path = LinearPath[{0, 1}, {2, 3}, 0.05];
+obstacles = {{1, {1.5, 1.3}}, {0.5, {2.3, 2.6}}, {0.25, {0.5, 2.6}}, {0.2, \
+{0.2, 2.2}}};
+PathCollision[{0.3, path}, obstacles, 0.05]\
+\>", "CodeText",
+ CellChangeTimes->{{3.9049782140028276`*^9, 3.9049783152495112`*^9}, {
+  3.907903724076711*^9, 3.90790372660382*^9}, {4.0026776378459187`*^9, 
+  4.002677685556402*^9}},ExpressionUUID->"bd4b6148-db1f-1247-b886-\
+586cde46db2d"],
+
+Cell["\<\
+hvor stien er gemt i variablen path og forhindringerne er gemt i obstacles \
+variablen.\
+\>", "Text",
+ CellChangeTimes->{{3.9049783332792764`*^9, 
+  3.90497834904385*^9}},ExpressionUUID->"3630dd63-3367-4c58-ab36-\
+ed47b337c340"],
+
+Cell["Output bliver alts\[ARing] en liste af True/False som f.eks.", "Text",
+ CellChangeTimes->{{3.9049787403405457`*^9, 
+  3.904978748842462*^9}},ExpressionUUID->"695e5ee6-4dc0-4abd-991d-\
+5d3a55eb8dc5"],
+
+Cell["\<\
+{False,False,False,False,False,False,False,False,False,False,False,False,\
+False,False,False,False,True,True,True,True,True,True,True,True,True,True,\
+True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,\
+True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,\
+True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,\
+True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,\
+True,True,True,True,True,True,True,True,True,True,True,True,False,False,False}\
+\>", "CodeText",
+ CellChangeTimes->{{3.9049787617555647`*^9, 
+  3.9049787653355637`*^9}},ExpressionUUID->"bbfc90f4-5eb4-4ee3-9cc8-\
+dee02ca9c412"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1026, 626.25},
+WindowMargins->{{-2.25, 51.75}, {46.5, -22.5}},
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 2, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"665256f7-74b7-4000-b31d-7af222ee369a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 345, 5, 65, "Section",ExpressionUUID->"33278281-fb48-4a86-8a7c-64498c114e35"],
+Cell[924, 29, 281, 6, 33, "Text",ExpressionUUID->"e51b813b-8452-4b20-97ef-f0d2980b2c30"],
+Cell[CellGroupData[{
+Cell[1230, 39, 179, 3, 53, "Subsection",ExpressionUUID->"aa3d7e1f-bf02-4339-9f62-c4ed9c2d47c0"],
+Cell[1412, 44, 342, 7, 55, "Text",ExpressionUUID->"61037cc1-727f-4644-89ea-ed532e6cbfe2"],
+Cell[1757, 53, 256, 4, 33, "Text",ExpressionUUID->"e5aecbf9-ae75-4dec-9d8e-e74c9ed87e7b"],
+Cell[2016, 59, 288, 6, 36, "CodeText",ExpressionUUID->"84161e06-d1fc-40eb-af96-4308ca6d65f5"],
+Cell[2307, 67, 242, 6, 33, "Text",ExpressionUUID->"f647270e-8904-4853-90bb-73b316471f10"],
+Cell[2552, 75, 248, 6, 36, "CodeText",ExpressionUUID->"33caf658-636a-4b16-b11b-59095b1e7c95"],
+Cell[2803, 83, 352, 7, 33, "Text",ExpressionUUID->"52c1ff71-944f-449c-ae0e-e00137f948ec"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3192, 95, 175, 3, 53, "Subsection",ExpressionUUID->"0f5108ad-2c7e-4f62-b7c1-ffb71fe843c4"],
+Cell[3370, 100, 361, 7, 55, "Text",ExpressionUUID->"cdd6c9cb-0e2f-425e-bb9e-16ce83301091"],
+Cell[3734, 109, 235, 4, 33, "Text",ExpressionUUID->"ab3d400c-0b11-4eb3-9dd5-bc1a80f49dba"],
+Cell[3972, 115, 180, 3, 33, "Text",ExpressionUUID->"42375cff-57d0-487c-ad6b-be490ddf0970"],
+Cell[4155, 120, 178, 3, 36, "CodeText",ExpressionUUID->"bbae1e2c-6bfc-4fc6-b437-171ea59b1ed9"],
+Cell[4336, 125, 873, 15, 121, "Text",ExpressionUUID->"5479710c-659f-44b0-95a2-118138620cc9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5246, 145, 177, 3, 53, "Subsection",ExpressionUUID->"b7d5b385-880a-40e3-a25c-46994cd95a19"],
+Cell[5426, 150, 328, 7, 55, "Text",ExpressionUUID->"f8870fc0-0445-4d73-9f0a-d8b81da6b666"],
+Cell[5757, 159, 305, 6, 36, "CodeText",ExpressionUUID->"885db92c-3b6f-4f1e-b43d-f9a9dc014cba"],
+Cell[6065, 167, 1074, 28, 55, "Text",ExpressionUUID->"7702cb27-45b8-4d78-8efd-6dc3d2d85d34"],
+Cell[7142, 197, 320, 7, 33, "Text",ExpressionUUID->"3c99a333-29d3-4f2b-b39c-ed6645efc5ad"],
+Cell[7465, 206, 178, 3, 33, "Text",ExpressionUUID->"85e76795-ee3d-4092-b3eb-3b2ef7c48adb"],
+Cell[7646, 211, 360, 8, 76, "CodeText",ExpressionUUID->"fab47b11-5dbb-465b-9f86-deaf49526713"],
+Cell[8009, 221, 270, 6, 33, "Text",ExpressionUUID->"e1417909-7047-b049-8354-61337e505932"],
+Cell[8282, 229, 429, 9, 76, "CodeText",ExpressionUUID->"bd4b6148-db1f-1247-b886-586cde46db2d"],
+Cell[8714, 240, 238, 6, 33, "Text",ExpressionUUID->"3630dd63-3367-4c58-ab36-ed47b337c340"],
+Cell[8955, 248, 204, 3, 33, "Text",ExpressionUUID->"695e5ee6-4dc0-4abd-991d-5d3a55eb8dc5"],
+Cell[9162, 253, 695, 11, 96, "CodeText",ExpressionUUID->"bbfc90f4-5eb4-4ee3-9cc8-dee02ca9c412"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
